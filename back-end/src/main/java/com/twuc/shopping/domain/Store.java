@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Store {
     private String storeName;
-    private  int  price;
+    private  double  price;
     private String storeUnit;
     private String picture;
 }
