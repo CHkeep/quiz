@@ -14,4 +14,9 @@ public class Store {
     private  double  price;
     private String storeUnit;
     private String picture;
+
+//    private int orderId;
+//
+//    private  int payNum;
+
 }

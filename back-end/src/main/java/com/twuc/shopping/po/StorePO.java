@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -16,11 +15,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class StorePO {
     @Id
-    @GeneratedValue(generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue
     private int id;
     private String storeName;
     private  double  price;
     private String storeUnit;
     private String picture;
+//    private  int payNum = 0;
+//    @ManyToOne
+//    private OrderPO OrderPO;
+
 }

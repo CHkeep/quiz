@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -27,13 +26,20 @@ class StoreTest {
     MockMvc mockMvc;
     @Autowired
     StoreRepository storeRepository;
+//    @Autowired
+//    OrderRepository orderRepository;
 
     ObjectMapper objectMapper = new ObjectMapper();
     Store store;
+//    OrderPO orderPO;
 
     @BeforeEach
     void setUp() {
         storeRepository.deleteAll();
+//        orderRepository.deleteAll();
+
+//        orderPO = OrderPO.builder().payNum(1).build();
+//        orderPO = orderRepository.save(orderPO);
     }
 
 
