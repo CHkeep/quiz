@@ -21,5 +21,4 @@ public class StorePO {
     private  int  price;
     private String storeUnit;
     private String picture;
-
 }

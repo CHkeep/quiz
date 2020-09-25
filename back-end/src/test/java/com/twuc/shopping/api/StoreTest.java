@@ -2,6 +2,7 @@ package com.twuc.shopping.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.twuc.shopping.domain.Store;
+import com.twuc.shopping.repository.StoreRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,6 +20,8 @@ class StoreTest {
 
         @Autowired
         MockMvc mockMvc;
+        @Autowired
+        StoreRepository storeRepository;
 
         ObjectMapper objectMapper = new ObjectMapper();
         Store store;
@@ -30,7 +33,7 @@ class StoreTest {
             mockMvc.perform(post("/st/store").content(jsonString)
                     .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk());
-//            assertEquals(size,rsEventRepository.findAll().size());
+            assertEquals(1, storeRepository.findAll().size());
         }
 
 }
