@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+const URL = 'http://localhost:8080/store';
 class  AddStore extends React.Component {
     state = {
         name: '',
@@ -34,20 +35,14 @@ class  AddStore extends React.Component {
     });
   }
 
-  handleSubmit(event){
-    event.preventDefault();  
-      
-    const URL = 'http://localhost:8080//st/store';
+  handleSubmit=(event)=>{
+    event.preventDefault();     
     var client = new XMLHttpRequest();
     client.open("POST", URL, false); 
-    client.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-    client.send(this.statea);
+    client.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    client.send(JSON.stringify(this.state));
       
   }
-
-  
-
-
   
   render() {    
     return (
