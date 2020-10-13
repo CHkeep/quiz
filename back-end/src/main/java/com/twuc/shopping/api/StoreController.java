@@ -16,16 +16,15 @@ public class StoreController {
         this.storeService = storeService;
     }
 
-    @PostMapping("/st/store")
+    @PostMapping("/store")
     public ResponseEntity addStore(@RequestBody Store store) {
         return storeService.addstore(store);
     }
 
 
-    @GetMapping("/st/store")
+    @GetMapping("/store")
     public ResponseEntity getStore() {
         return storeService.gettore();
     }
-
-
+    
 }
