@@ -20,7 +20,11 @@ public class OrderController {
     @PostMapping("/order")
     public ResponseEntity addOrder(@RequestParam int storeId){
         return orderService.addOrder(storeId);
+    }
 
+    @PostMapping("/order/delete")
+    public ResponseEntity deleteOrder(@RequestParam int storeId){
+        return orderService.deleteOrder(storeId);
     }
 
 }

@@ -23,4 +23,9 @@ public class OrderService {
         return  ResponseEntity.ok().build();
 
     }
+
+    public ResponseEntity deleteOrder(int storeId) {
+        orderRepository.deleteAllByStorePO_Id(storeId);
+        return ResponseEntity.ok().build();
+    }
 }
