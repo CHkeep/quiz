@@ -1,4 +1,5 @@
 import React from 'react';
+import './addStore.css';
 
 
 const URL = 'http://localhost:8080/store';
@@ -46,31 +47,33 @@ class  AddStore extends React.Component {
   
   render() {    
     return (
+      
       <div>
+        <div className="title">添加商品</div>
        <form className='storeform'  onSubmit={this.handleSubmit}>
         <label>
-         名称:
+         名称:<br/>
           <input className='input' type='text' name='name' value={this.state.name} onChange={this.handleNameChange}/>
         </label>
 
         <label>
-          价格:
+          价格:<br/>
           <input className='input' type='text' name='price' value={this.state.price} onChange={this.handlePriceChange}/>
         </label> 
         
         <label>
-          单位:
+          单位:<br/>
           <input className='input' type='text' name='union' value={this.state.union} onChange={this.handleUnionChange}/>
         </label> 
 
         <label>
-         图片:
+         图片:<br/>
           <input className='input' type='text' name='picture' value={this.state.picture} onChange={this.handlePictureChange}/>
         </label>
         <input 
           className='submit' 
           type='submit'
-          value='Submit'
+          value='提交'
           disabled={!this.state.name 
             || !this.state.price
             || !this.state.union
