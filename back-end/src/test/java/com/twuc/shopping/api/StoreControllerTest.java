@@ -3,6 +3,7 @@ package com.twuc.shopping.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.twuc.shopping.domain.Store;
 import com.twuc.shopping.po.StorePO;
+import com.twuc.shopping.repository.OrderRepository;
 import com.twuc.shopping.repository.StoreRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,26 +21,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class StoreTest {
+class StoreControllerTest {
 
     @Autowired
     MockMvc mockMvc;
     @Autowired
     StoreRepository storeRepository;
-//    @Autowired
-//    OrderRepository orderRepository;
 
     ObjectMapper objectMapper = new ObjectMapper();
-    Store store;
-//    OrderPO orderPO;
 
     @BeforeEach
     void setUp() {
         storeRepository.deleteAll();
-//        orderRepository.deleteAll();
-
-//        orderPO = OrderPO.builder().payNum(1).build();
-//        orderPO = orderRepository.save(orderPO);
     }
 
 
@@ -50,12 +43,15 @@ class StoreTest {
         mockMvc.perform(post("/store").content(jsonString)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-//        assertEquals(1, storeRepository.findAll().size());
+        assertEquals(1.0, storeRepository.findAll().get(0).getPrice());
     }
 
 
     @Test
     public void should_get_store() throws Exception {
+        StorePO storePO1 = StorePO.builder().picture("a/c").storeUnit("瓶").price(3)
+                .storeName("可乐").build();
+        storeRepository.save(storePO1);
 
         for (int i = 0; i < 5; i++) {
             StorePO storePO = StorePO.builder().storeName("雪碧" + i).price(i + 2).picture("url" + i).storeUnit("瓶").build();
@@ -63,7 +59,8 @@ class StoreTest {
         }
         mockMvc.perform(get("/store"))
                 .andExpect(status().isOk());
-//        assertEquals(5, storeRepository.findAll().size());
+        assertEquals(6, storeRepository.findAll().size());
+        assertEquals("可乐", storeRepository.findAll().get(0).getStoreName());
 
     }
 }

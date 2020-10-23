@@ -5,18 +5,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
+import javax.validation.constraints.NotNull;
+
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Store {
+    @NotNull
     private String storeName;
+    @NotNull
     private  double  price;
+    @NotNull
     private String storeUnit;
+    @NotNull
     private String picture;
-
-//    private int orderId;
-//
-//    private  int payNum;
 
 }

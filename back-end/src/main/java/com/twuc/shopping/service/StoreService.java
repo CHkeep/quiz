@@ -25,14 +25,14 @@ public class StoreService {
         return  ResponseEntity.ok().build();
     }
 
-    public ResponseEntity gettore() {
+    public ResponseEntity<List<StorePO>> gettore() {
         List<StorePO> storePOS = storeRepository.findAll();
-        List<Store> storeList = storePOS.stream().map(storePO ->
-                Store.builder().picture(storePO.getPicture())
-                                .price(storePO.getPrice())
-                                .storeName(storePO.getStoreName())
-                                .storeUnit(storePO.getStoreUnit()).build())
-                                .collect(Collectors.toList());
-        return  ResponseEntity.ok(storeList);
+//        List<Store> storeList = storePOS.stream().map(storePO ->
+//                Store.builder().picture(storePO.getPicture())
+//                                .price(storePO.getPrice())
+//                                .storeName(storePO.getStoreName())
+//                                .storeUnit(storePO.getStoreUnit()).build())
+//                                .collect(Collectors.toList());
+        return  ResponseEntity.ok(storePOS);
     }
 }

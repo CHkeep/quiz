@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "store")
@@ -15,14 +17,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class StorePO {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private int id;
     private String storeName;
     private  double  price;
     private String storeUnit;
     private String picture;
-//    private  int payNum = 0;
-//    @ManyToOne
-//    private OrderPO OrderPO;
 
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "storePO")
+    private List<OrderPO> orderPOS;
 }

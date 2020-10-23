@@ -23,7 +23,7 @@ public class StoreController {
 
 
     @GetMapping("/store")
-    public ResponseEntity getStore() {
+    public ResponseEntity getStores() {
         return storeService.gettore();
     }
     
